@@ -144,6 +144,7 @@ function App() {
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [score, setScore] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
+  const [quizStarted, setQuizStarted] = useState(false);
 
   const handleAnswer = (answer) => {
     setSelectedAnswer(answer);
@@ -185,6 +186,32 @@ function App() {
       </div>
     );
   }
+  if (!quizStarted) {
+  return (
+    <div className="app">
+      <div className="result-card">
+        <div className="quiz-icon">🧠</div>
+
+        <h1>Interactive Quiz</h1>
+
+        <p className="message">
+          Test your web development knowledge with 10 multiple-choice questions.
+        </p>
+
+        <p className="score-text">
+          Total Questions: {questions.length}
+        </p>
+
+        <button
+          className="restart-btn"
+          onClick={() => setQuizStarted(true)}
+        >
+         Start Quiz
+        </button>
+      </div>
+    </div>
+  );
+}
 
   const progress =
     ((currentQuestion + 1) / questions.length) * 100;
